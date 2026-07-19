@@ -35,9 +35,9 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Pack
-        run: dotnet pack $PROJECT -c Release -o ${{ github.workspace }}/Package --no-build
+        run: dotnet pack $PROJECT -c Release -o ${{ github.workspace }}\Package --no-build
         working-directory: ${{ github.workspace }}
 
       - name: Push to NuGet (Trusted Publishing)
-        run: dotnet nuget push ${{ github.workspace }}/Package/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ${{ github.workspace }}\Package\*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
         working-directory: ${{ github.workspace }}
