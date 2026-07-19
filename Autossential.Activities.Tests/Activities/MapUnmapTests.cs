@@ -48,9 +48,8 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task UnmapDrive_MissingDriveLetter_Throws()
         {
-            // DriveLetter is required for unmapping; workflow validation raises ArgumentException when missing
             await Assert.That(() => WorkflowInvoker.Invoke(new UnmapDrive()))
-                .Throws<ArgumentException>();
+                .Throws<InvalidOperationException>();
         }
 
         [Test]
@@ -175,6 +174,30 @@ namespace Autossential.Activities.Tests.Activities
             {
                 { nameof(UnmapDrive.DriveLetter), driveLetter },
             })).IsTrue();
+        }
+
+        [Test]
+        public async Task UnmapDrive_AllDrives_ShouldUnmapAll()
+        {
+            var drives = GetLogicalDrives();
+            for (int i = 0; i < 3; i++)
+            {
+                WorkflowInvoker.InvokeOutputs(new MapDrive
+                {
+                    SharedDrivePath = NetworkPath
+                });
+            }
+
+            var drivesAfterMapping = GetLogicalDrives();
+            await Assert.That(drivesAfterMapping.Length > drives.Length).IsTrue();
+
+            WorkflowInvoker.Invoke(new UnmapDrive
+            {
+                AllDrives = true
+            });
+
+            var drivesAfterUnmapping = GetLogicalDrives();
+            await Assert.That(drivesAfterUnmapping).IsEquivalentTo(drives);
         }
     }
 }

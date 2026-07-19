@@ -469,33 +469,54 @@
     <value>Spécifie l'objet NetworkCredential contenant le nom d'utilisateur, le mot de passe et éventuellement le domaine pour authentifier l'utilisateur lors du mappage du lecteur réseau. Requis pour les dossiers partagés protégés.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Résultat</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Spécifie la lettre du lecteur réseau à déconnecter. Le format requis est &lt;lettre&gt;&lt;deux-points&gt;, par exemple : « X: », « y: », « Z: ».</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Lettre du lecteur</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>Code de retour de l'opération.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Code de réponse</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Description du résultat.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Message de réponse</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Vrai si le lecteur a été déconnecté avec succès.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Déconnecter le lecteur</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Supprime le mappage d'un ou de tous les lecteurs réseau mappés du système.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Supprimer le mappage du lecteur</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Spécifie la lettre du lecteur mappé à supprimer. Le format requis est &lt;lettre&gt;&lt;deux-points&gt;, par exemple : "X:", "y:", "Z:". Cette propriété est ignorée lorsque AllDrives est défini sur true.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Lettre de lecteur</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>Lorsqu'il est défini sur true, supprime le mappage de tous les lecteurs réseau mappés. Lorsqu'il est false, seul le lecteur spécifié dans DriveLetter est supprimé.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Tous les lecteurs</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Représente le code de retour de l'opération de suppression de mappage du lecteur. Pour les opérations sur un seul lecteur, cette valeur indique si l'opération a réussi ou échoué selon les codes d'erreur Windows standard. Pour les opérations sur plusieurs lecteurs, 0 indique que tous les lecteurs ont été supprimés avec succès, 1 indique un succès partiel et 2 indique que tous les lecteurs ont échoué.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Code de réponse</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Fournit la description textuelle correspondant au code de réponse. Pour les opérations sur plusieurs lecteurs, ce message contient des détails pour chaque lecteur qui n'a pas pu être supprimé.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Message de réponse</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Renvoie true si le lecteur a été supprimé avec succès, false sinon. Pour les opérations sur plusieurs lecteurs, renvoie true uniquement si tous les lecteurs mappés ont été supprimés avec succès.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Résultat</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Si vide, les identifiants de l'utilisateur actuel seront utilisés.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Flux de travail</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Supprime un lecteur réseau mappé.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Fusionner les données</value>

@@ -47,7 +47,7 @@ namespace Autossential.Activities.Tests.Activities
         public async Task ShouldCompleteWithoutFault_WhenBodyIsNull()
         {
             var completed = new ManualResetEventSlim(false);
-            Exception? faultEx = null;
+            Exception faultEx = null;
 
             var container = new Container { Body = null };
 
@@ -170,7 +170,7 @@ namespace Autossential.Activities.Tests.Activities
             // Two Exit in sequence — the second must not cause exception
             // because the bookmark was already consumed by the first one
             var completed = new ManualResetEventSlim(false);
-            Exception? faultEx = null;
+            Exception faultEx = null;
 
             var container = new Container
             {

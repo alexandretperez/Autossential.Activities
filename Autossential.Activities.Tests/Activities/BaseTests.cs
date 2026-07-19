@@ -2,7 +2,7 @@ namespace Autossential.Activities.Tests.Activities
 {
     public class BaseTests
     {
-        private string? _dir;
+        private string _dir;
         protected string NewDir()
         {
             _dir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());

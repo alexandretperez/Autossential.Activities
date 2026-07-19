@@ -121,12 +121,14 @@ namespace Autossential.Activities
 
         private static string NormalizeDriveLetter(string driveLetter) => char.ToUpper(driveLetter[0]) + ":";
 
+        protected static string GetMessageFromCode(int responseCode)
+            => responseCode == 0
+                ? Resources.NetworkDrive_ResponseMsg_Success
+                : new Win32Exception(responseCode).Message;
+
         protected void SetResponseMessageFromCode(CodeActivityContext context, int responseCode)
         {
-            ResponseMessage.Set(context,
-                responseCode == 0
-                ? Resources.NetworkDrive_ResponseMsg_Success
-                : new Win32Exception(responseCode).Message);
+            ResponseMessage.Set(context, GetMessageFromCode(responseCode));
         }
     }
 }

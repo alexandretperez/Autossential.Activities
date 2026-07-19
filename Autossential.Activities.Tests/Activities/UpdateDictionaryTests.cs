@@ -4,7 +4,7 @@ namespace Autossential.Activities.Tests.Activities
 {
     public class UpdateDictionaryTests
     {
-        private static void Invoke<TKey, TValue>(Dictionary<TKey, TValue>? dictionary, Dictionary<TKey, TValue>? entries)
+        private static void Invoke<TKey, TValue>(Dictionary<TKey, TValue> dictionary, Dictionary<TKey, TValue> entries)
         {
             WorkflowInvoker.Invoke(new UpdateDictionary<TKey, TValue>(), new Dictionary<string, object>
             {

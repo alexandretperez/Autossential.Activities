@@ -2,6 +2,7 @@
   "activities": [
     {
       "categoryKey": "ActivityCategories_Data",
+      "defaultFactory": "Autossential.Activities.Factories.AddRangeToCollectionFactory",
       "descriptionKey": "AddRangeToCollection_Description",
       "displayNameKey": "AddRangeToCollection_DisplayName",
       "fullName": "Autossential.Activities.AddRangeToCollection\u00601",
@@ -1123,10 +1124,21 @@
             "name": "Input"
           },
           "displayNameKey": "UnmapDrive_DriveLetter_DisplayName",
-          "isRequired": true,
+          "isRequired": false,
           "isVisible": true,
           "name": "DriveLetter",
           "tooltipKey": "UnmapDrive_DriveLetter_Description"
+        },
+        {
+          "category": {
+            "displayNameKey": "Categories_Options",
+            "name": "Options"
+          },
+          "displayNameKey": "UnmapDrive_AllDrives_DisplayName",
+          "isRequired": false,
+          "isVisible": true,
+          "name": "AllDrives",
+          "tooltipKey": "UnmapDrive_AllDrives_Description"
         },
         {
           "category": {
@@ -1233,6 +1245,7 @@
     },
     {
       "categoryKey": "ActivityCategories_Data",
+      "defaultFactory": "Autossential.Activities.Factories.UpdateDictionaryFactory",
       "descriptionKey": "UpdateDictionary_Description",
       "displayNameKey": "UpdateDictionary_DisplayName",
       "fullName": "Autossential.Activities.UpdateDictionary\u00602",

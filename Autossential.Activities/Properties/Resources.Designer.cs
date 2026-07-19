@@ -1906,7 +1906,25 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removes a mapped network drive from the system..
+        ///   Looks up a localized string similar to When set to true, unmaps all mapped network drives. When false, only the drive specified in DriveLetter is unmapped..
+        /// </summary>
+        public static string UnmapDrive_AllDrives_Description {
+            get {
+                return ResourceManager.GetString("UnmapDrive_AllDrives_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Drives.
+        /// </summary>
+        public static string UnmapDrive_AllDrives_DisplayName {
+            get {
+                return ResourceManager.GetString("UnmapDrive_AllDrives_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unmaps one or all mapped network drives from the system..
         /// </summary>
         public static string UnmapDrive_Description {
             get {
@@ -1924,7 +1942,7 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specifies the drive letter of the mapped drive to be unmapped. The required format is &lt;letter&gt;&lt;colon&gt;, for example: &quot;X:&quot;, &quot;y:&quot;, &quot;Z:&quot;..
+        ///   Looks up a localized string similar to Specifies the drive letter of the mapped drive to be unmapped. The required format is &lt;letter&gt;&lt;colon&gt;, for example: &quot;X:&quot;, &quot;y:&quot;, &quot;Z:&quot;. This property is ignored when AllDrives is set to true..
         /// </summary>
         public static string UnmapDrive_DriveLetter_Description {
             get {
@@ -1942,7 +1960,7 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Represents the return code of the drive mapping operation. This value indicates whether the operation succeeded or failed, according to the standard Windows error codes..
+        ///   Looks up a localized string similar to Represents the return code of the drive unmapping operation. For single drive operations, this value indicates whether the operation succeeded or failed according to standard Windows error codes. For multi-drive operations, 0 indicates all drives were successfully unmapped, 1 indicates partial success, and 2 indicates all drives failed..
         /// </summary>
         public static string UnmapDrive_ResponseCode_Description {
             get {
@@ -1960,7 +1978,7 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provides the textual description corresponding to the response code. This message explains the result of the operation in a human‑readable format..
+        ///   Looks up a localized string similar to Provides the textual description corresponding to the response code. For multi-drive operations, this message contains details for each drive that failed to unmap..
         /// </summary>
         public static string UnmapDrive_ResponseMessage_Description {
             get {
@@ -1978,7 +1996,7 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Returns true if the drive was successfully unmapped, false otherise..
+        ///   Looks up a localized string similar to Returns true if the drive was successfully unmapped, false otherwise. For multi-drive operations, returns true only if all mapped drives were successfully unmapped..
         /// </summary>
         public static string UnmapDrive_Result_Description {
             get {
