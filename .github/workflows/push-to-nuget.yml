@@ -7,28 +7,37 @@ on:
   push:
     tags:
       - "v*.*.*"
-
 jobs:
-  pack-push:
+  publish:
     runs-on: windows-latest
     permissions:
       id-token: write
       contents: read
 
     env:
-      project: ./Autossential.Activities.Packaging/Autossential.Activities.Packaging.csproj
+      PROJECT: ./Autossential.Activities.Packaging/Autossential.Activities.Packaging.csproj
 
     steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Restore
-      run: dotnet restore ${{env.project}} --configfile .nuget/NuGet.Config
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
 
-    - name: Build
-      run: dotnet build ${{env.project}} -c Release
+      - name: Restore
+        run: dotnet restore $PROJECT --configfile .nuget/NuGet.Config
+        working-directory: ${{ github.workspace }}
 
-    - name: Pack
-      run: dotnet pack ${{env.project}} -c Release -o Package --no-build
+      - name: Build
+        run: dotnet build $PROJECT -c Release --no-restore
+        working-directory: ${{ github.workspace }}
+
+      - name: Pack
+        run: dotnet pack $PROJECT -c Release -o ${{ github.workspace }}/Package --no-build
+        working-directory: ${{ github.workspace }}
+
+      - name: Push to NuGet (Trusted Publishing)
+        run: dotnet nuget push ${{ github.workspace }}/Package/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+        working-directory: ${{ github.workspace }}
