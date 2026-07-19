@@ -5,7 +5,7 @@ name: .NET
 on:
   push:
     tags:
-      - "v.*.*"
+      - "v*.*.*"
 
 jobs:
   pack-push:
