@@ -25,7 +25,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore
-      run: dotnet restore ${{env.project}} --configFile .nuget/NuGet.Config
+      run: dotnet restore ${{env.project}} --configfile .nuget/NuGet.Config
 
     - name: Build
       run: dotnet build ${{env.project}} -c Release
