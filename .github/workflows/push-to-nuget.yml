@@ -3,6 +3,7 @@
 name: .NET
 
 on:
+  workflow_dispatch: 
   push:
     tags:
       - "v*.*.*"
@@ -23,20 +24,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Adding nuget package sources (MyGet-Official)
-      run: dotnet nuget add source https://pkgs.dev.azure.com/uipath/Public.Feeds/_packaging/UiPath-Official/nuget/v3/index.json --name UiPath-Official
-
-    - name: Adding nuget package sources (UiPath-Internal)
-      run: dotnet nuget add source https://uipath.pkgs.visualstudio.com/Public.Feeds/_packaging/UiPath-Internal/nuget/v3/index.json --name UiPath-Internal
-
     - name: Restore
-      run: dotnet restore ${{env.project}}
+      run: dotnet restore ${{env.project}} --configfile .nuget/NuGet.Config
 
     - name: Build
       run: dotnet build ${{env.project}} -c Release
 
     - name: Pack
       run: dotnet pack ${{env.project}} -c Release -o Package --no-build
-
-    - name: Push to NuGet
-      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
