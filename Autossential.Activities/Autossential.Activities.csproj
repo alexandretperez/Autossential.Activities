@@ -7,6 +7,7 @@
 		<LangVersion>14.0</LangVersion>
 		<PackageId>Autossential</PackageId>
 		<Platforms>AnyCPU;x64</Platforms>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0-windows' Or '$(TargetFramework)' == 'net8.0-windows'">
