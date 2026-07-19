@@ -39,4 +39,4 @@ jobs:
       run: dotnet pack ${{env.project}} -c Release -o Package --no-build
 
     - name: Push to NuGet
-      run: dotnet nuget push Package/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
