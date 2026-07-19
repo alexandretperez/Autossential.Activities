@@ -469,33 +469,54 @@
     <value>Especifica o objeto NetworkCredential que contém o nome de utilizador, palavra-passe e, opcionalmente, o domínio para autenticar o utilizador ao mapear a unidade de rede. Necessário para pastas partilhadas protegidas.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Resultado</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Especifica a letra da unidade mapeada que será desmapeada. O formato requerido é &lt;letra&gt;&lt;dois pontos&gt;, por exemplo: "X:", "y:", "Z:".</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Letra da Unidade</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>O código de retorno da operação.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Código de Resposta</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>A descrição do resultado.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Mensagem de Resposta</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Retorna True se a unidade for desligada com sucesso.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Remover Mapeamento</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Remove o mapeamento de uma ou todas as unidades de rede mapeadas do sistema.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Desmapear unidade</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Especifica a letra da unidade mapeada a ser removida. O formato necessário é &lt;letra&gt;&lt;dois pontos&gt;, por exemplo: "X:", "y:", "Z:". Esta propriedade é ignorada quando AllDrives está definido como true.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Letra da unidade</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>Quando definido como true, remove o mapeamento de todas as unidades de rede mapeadas. Quando false, apenas a unidade especificada em DriveLetter é desmapeada.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Todas as unidades</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Representa o código de retorno da operação de desmapeamento da unidade. Para operações de unidade única, este valor indica se a operação foi bem-sucedida ou falhou de acordo com os códigos de erro padrão do Windows. Para operações de múltiplas unidades, 0 indica que todas as unidades foram desmapeadas com sucesso, 1 indica sucesso parcial e 2 indica que todas as unidades falharam.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Código de resposta</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Fornece a descrição textual correspondente ao código de resposta. Para operações de múltiplas unidades, esta mensagem contém detalhes para cada unidade que falhou ao ser desmapeada.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Mensagem de resposta</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Retorna true se a unidade foi desmapeada com sucesso, false caso contrário. Para operações de múltiplas unidades, retorna true apenas se todas as unidades mapeadas foram desmapeadas com sucesso.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Resultado</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Se vazio, utilizará as credenciais do utilizador atual.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Workflow</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Remove uma unidade de rede mapeada anteriormente.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Mesclar Dados</value>

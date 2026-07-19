@@ -469,33 +469,54 @@
     <value>指定 NetworkCredential 对象，其中包含用户名、密码以及可选的域，用于在映射网络驱动器时对用户进行身份验证。受保护的共享文件夹需要此参数。</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>结果</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>指定要取消映射的已映射驱动器的驱动器号。格式要求为&lt;字母&gt;&lt;冒号&gt;，例如：“X:”、“y:”、“Z:”。</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>驱动器盘符</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>操作返回代码。</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>响应代码</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>结果说明。</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>响应消息</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>如果成功断开驱动器连接则返回 True。</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>断开驱动器映射</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>从系统中取消映射一个或所有已映射的网络驱动器。</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>取消映射驱动器</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>指定要取消映射的已映射驱动器的驱动器号。所需格式为 &lt;字母&gt;&lt;冒号&gt;，例如："X:"、"y:"、"Z:"。当 AllDrives 设置为 true 时，此属性将被忽略。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>驱动器号</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>当设置为 true 时，取消映射所有已映射的网络驱动器。当为 false 时，仅取消映射 DriveLetter 中指定的驱动器。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>所有驱动器</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>表示驱动器取消映射操作的返回代码。对于单驱动器操作，此值根据标准 Windows 错误代码指示操作是成功还是失败。对于多驱动器操作，0 表示所有驱动器都已成功取消映射，1 表示部分成功，2 表示所有驱动器都失败。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>响应代码</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>提供与响应代码对应的文本描述。对于多驱动器操作，此消息包含每个取消映射失败的驱动器的详细信息。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>响应消息</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>如果驱动器成功取消映射，则返回 true，否则返回 false。对于多驱动器操作，仅当所有已映射的驱动器都成功取消映射时才返回 true。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>结果</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>如果为空，将使用当前用户的凭据。</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.工作流</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>删除已映射的网络驱动器。</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>合并数据</value>

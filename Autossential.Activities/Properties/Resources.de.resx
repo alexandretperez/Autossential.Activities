@@ -469,33 +469,54 @@
     <value>Gibt das NetworkCredential-Objekt an, das den Benutzernamen, das Kennwort und optional die Domäne enthält, um den Benutzer beim Zuordnen des Netzlaufwerks zu authentifizieren. Erforderlich für geschützte freigegebene Ordner.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Ergebnis</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Gibt den Laufwerksbuchstaben des verbundenen Laufwerks an, das getrennt werden soll. Das erforderliche Format ist &lt;Buchstabe&gt;&lt;Doppelpunkt&gt;, zum Beispiel: "X:", "y:", "Z:".</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Laufwerksbuchstabe</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>Stellt den Rückgabecode des Laufwerkstrennungsvorgangs dar. Dieser Wert gibt an, ob der Vorgang gemäß den Standard-Windows-Fehlercodes erfolgreich war oder fehlgeschlagen ist.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Antwortcode</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Bietet die Textbeschreibung zum Antwortcode. Diese Nachricht erklärt das Ergebnis des Vorgangs in einem menschenlesbaren Format.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Antwortnachricht</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Gibt true zurück, wenn das Laufwerk erfolgreich getrennt wurde, andernfalls false.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Laufwerk trennen</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Hebt die Zuordnung eines oder aller zugeordneten Netzlaufwerke im System auf.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Laufwerkzuordnung aufheben</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Gibt den Laufwerksbuchstaben des zu entfernenden zugeordneten Laufwerks an. Das erforderliche Format ist &lt;Buchstabe&gt;&lt;Doppelpunkt&gt;, z.B.: "X:", "y:", "Z:". Diese Eigenschaft wird ignoriert, wenn AllDrives auf true gesetzt ist.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Laufwerksbuchstabe</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>Wenn auf true gesetzt, hebt die Zuordnung aller zugeordneten Netzlaufwerke auf. Bei false wird nur das in DriveLetter angegebene Laufwerk entfernt.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Alle Laufwerke</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Stellt den Rückgabecode des Vorgangs zum Aufheben der Laufwerkszuordnung dar. Bei einzelnen Laufwerken gibt dieser Wert an, ob der Vorgang gemäß den standardmäßigen Windows-Fehlercodes erfolgreich war oder fehlgeschlagen ist. Bei mehreren Laufwerken bedeutet 0, dass alle Laufwerke erfolgreich entfernt wurden, 1 bedeutet teilweisen Erfolg und 2 bedeutet, dass alle Laufwerke fehlgeschlagen sind.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Antwortcode</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Liefert die textuelle Beschreibung, die dem Antwortcode entspricht. Bei mehreren Laufwerken enthält diese Nachricht Details für jedes Laufwerk, bei dem die Aufhebung fehlgeschlagen ist.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Antwortnachricht</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Gibt true zurück, wenn die Laufwerkszuordnung erfolgreich aufgehoben wurde, andernfalls false. Bei mehreren Laufwerken wird nur dann true zurückgegeben, wenn alle zugeordneten Laufwerke erfolgreich entfernt wurden.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Ergebnis</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Falls nicht angegeben, werden die Anmeldedaten des aktuellen Benutzers verwendet.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Workflow</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Entfernt ein verbundenes Netzlaufwerk aus dem System.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Daten zusammenführen</value>

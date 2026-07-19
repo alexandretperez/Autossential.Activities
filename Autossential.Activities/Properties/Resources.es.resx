@@ -469,33 +469,54 @@
     <value>Especifica el objeto NetworkCredential que contiene el nombre de usuario, la contraseña y, opcionalmente, el dominio para autenticar al usuario al asignar la unidad de red. Requerido para carpetas compartidas protegidas.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Resultado</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Especifica la letra de unidad de la unidad asignada que se va a desasignar. El formato requerido es &lt;letra&gt;&lt;dos puntos&gt;, por ejemplo: "X:", "y:", "Z:".</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Letra de unidad</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>Representa el código de retorno de la operación de asignación de unidad. Este valor indica si la operación tuvo éxito o falló, de acuerdo con los códigos de error estándar de Windows.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Código de respuesta</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Proporciona la descripción textual correspondiente al código de respuesta. Este mensaje explica el resultado de la operación en un formato legible para humanos.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Mensaje de respuesta</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Devuelve verdadero si la unidad se desasignó correctamente, falso en caso contrario.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Desasignar unidad</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Desasigna una o todas las unidades de red asignadas del sistema.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Desasignar unidad</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Especifica la letra de la unidad asignada que se va a desasignar. El formato requerido es &lt;letra&gt;&lt;dos puntos&gt;, por ejemplo: "X:", "y:", "Z:". Esta propiedad se ignora cuando AllDrives está establecido en true.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Letra de unidad</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>Cuando se establece en true, desasigna todas las unidades de red asignadas. Cuando es false, solo se desasigna la unidad especificada en DriveLetter.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Todas las unidades</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Representa el código de retorno de la operación de desasignación de unidad. Para operaciones de unidad única, este valor indica si la operación fue exitosa o falló según los códigos de error estándar de Windows. Para operaciones de múltiples unidades, 0 indica que todas las unidades se desasignaron correctamente, 1 indica éxito parcial y 2 indica que todas las unidades fallaron.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Código de respuesta</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Proporciona la descripción textual correspondiente al código de respuesta. Para operaciones de múltiples unidades, este mensaje contiene detalles de cada unidad que falló al desasignarse.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Mensaje de respuesta</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Devuelve true si la unidad se desasignó correctamente, false en caso contrario. Para operaciones de múltiples unidades, devuelve true solo si todas las unidades asignadas se desasignaron correctamente.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Resultado</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Si no se proporcionan, se utilizarán las credenciales del usuario actual.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Flujo de trabajo</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Elimina una unidad de red asignada del sistema.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Fusionar datos</value>

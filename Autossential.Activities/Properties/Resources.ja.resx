@@ -469,33 +469,54 @@
     <value>ネットワークドライブをマッピングする際にユーザーを認証するための、ユーザー名、パスワード、およびオプションのドメインを含む NetworkCredential オブジェクトを指定します。保護された共有フォルダーに必要です。</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>結果</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>マップされたドライブのドライブ文字を指定します。指定する形式は&lt;文字&gt;&lt;コロン&gt;です。例: "X:", "y:", "Z:"。</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>ドライブ文字</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>操作のリターンコード。</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>レスポンスコード</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>結果の説明。</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>レスポンスメッセージ</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>ドライブが正常に切断された場合はTrue。</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>ドライブを切断</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>システムからマップされたネットワークドライブを1つまたはすべてマッピング解除します。</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>ドライブのマッピング解除</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>マッピングを解除するマップされたドライブのドライブ文字を指定します。必要な形式は &lt;文字&gt;&lt;コロン&gt; です。例："X:"、"y:"、"Z:"。AllDrives が true に設定されている場合、このプロパティは無視されます。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>ドライブ文字</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>true に設定すると、すべてのマップされたネットワークドライブのマッピングを解除します。false の場合、DriveLetter で指定されたドライブのみがマッピング解除されます。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>すべてのドライブ</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>ドライブのマッピング解除操作のリターンコードを表します。単一ドライブ操作の場合、この値は標準の Windows エラーコードに従って操作が成功したか失敗したかを示します。複数ドライブ操作の場合、0 はすべてのドライブが正常にマッピング解除されたことを示し、1 は部分的な成功を示し、2 はすべてのドライブが失敗したことを示します。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>応答コード</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>応答コードに対応するテキストによる説明を提供します。複数ドライブ操作の場合、このメッセージにはマッピング解除に失敗した各ドライブの詳細が含まれます。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>応答メッセージ</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>ドライブが正常にマッピング解除された場合は true を返し、それ以外の場合は false を返します。複数ドライブ操作の場合、マップされたすべてのドライブが正常にマッピング解除された場合にのみ true を返します。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>結果</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>空の場合、現在のユーザーの資格情報が使用されます。</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.ワークフロー</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>割り当てられたネットワークドライブを削除します。</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>データをマージ</value>

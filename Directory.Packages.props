@@ -4,12 +4,10 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-	  <PackageVersion Include="System.Activities.ViewModels" Version="1.20260216.2" />
-	  <PackageVersion Include="UiPath.Activities.Api" Version="24.10.1" />
+	  <PackageVersion Include="System.Activities.ViewModels" Version="1.20260609.1" />
 	  <PackageVersion Include="System.Activities.Metadata" Version="6.0.0-20240517.13" />
+	  <PackageVersion Include="UiPath.Activities.Api" Version="24.10.1" />
 	  <PackageVersion Include="UiPath.Workflow" Version="6.0.0-20240401-07" />
 	  <PackageVersion Include="TUnit" Version="1.56.18" />
-	  <PackageVersion Include="UiPath.Activities.Api" Version="24.10.1" />
-	  <PackageVersion Include="UiPath.Workflow" Version="6.0.0-20240401-07" />
   </ItemGroup>
 </Project>

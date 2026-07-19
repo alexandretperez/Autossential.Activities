@@ -469,33 +469,54 @@
     <value>Указывает объект NetworkCredential, содержащий имя пользователя, пароль и, при необходимости, домен для аутентификации пользователя при сопоставлении сетевого диска. Требуется для защищенных общих папок.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Результат</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Указывает букву диска, который необходимо отключить от сети. Требуемый формат: &lt;буква&gt;&lt;двоеточие&gt;, например: "X:", "y:", "Z:".</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Буква диска</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>Код возврата операции.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Код ответа</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Описание результата.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Сообщение ответа</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>True, если диск был успешно отключен.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Отключить диск</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Отключает одно или все сопоставленные сетевые диски из системы.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Отключить диск</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Указывает букву сопоставленного диска, который необходимо отключить. Требуемый формат: &lt;буква&gt;&lt;двоеточие&gt;, например: "X:", "y:", "Z:". Это свойство игнорируется, если AllDrives установлен в true.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Буква диска</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>Если установлено значение true, отключает все сопоставленные сетевые диски. Если false, отключается только диск, указанный в DriveLetter.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Все диски</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Представляет код возврата операции отключения диска. Для операций с одним диском это значение указывает, успешно ли выполнена операция или нет, в соответствии со стандартными кодами ошибок Windows. Для операций с несколькими дисками 0 означает, что все диски были успешно отключены, 1 означает частичный успех, а 2 означает, что все диски не удалось отключить.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Код ответа</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Предоставляет текстовое описание, соответствующее коду ответа. Для операций с несколькими дисками это сообщение содержит подробные сведения о каждом диске, который не удалось отключить.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Сообщение ответа</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Возвращает true, если диск был успешно отключен, и false в противном случае. Для операций с несколькими дисками возвращает true, только если все сопоставленные диски были успешно отключены.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Результат</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Если пусто, будут использоваться учетные данные текущего пользователя.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Рабочий процесс</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Удаляет подключенный сетевой диск.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Объединить данные</value>

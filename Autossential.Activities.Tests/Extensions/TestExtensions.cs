@@ -6,7 +6,7 @@ namespace Autossential.Activities.Tests.Extensions
     {
         extension(WorkflowInvoker)
         {
-            public static (T, IDictionary<string, object>) InvokeOutputs<T>(Activity<T> activity, IDictionary<string, object>? inputs = null)
+            public static (T, IDictionary<string, object>) InvokeOutputs<T>(Activity<T> activity, IDictionary<string, object> inputs = null)
             {
                 var outputs = inputs is null
                     ? WorkflowInvoker.Invoke((Activity)activity)

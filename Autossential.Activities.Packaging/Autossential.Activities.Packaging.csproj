@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-windows;net8.0;net8.0-windows</TargetFrameworks>
+		<TargetFrameworks>net8.0;net8.0-windows</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Platforms>AnyCPU;x64</Platforms>
@@ -11,7 +11,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<VersionBuild>$([System.DateTime]::UtcNow.DayOfYear.ToString("F0"))</VersionBuild>
 		<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("F0"))</VersionRevision>
-		<VersionPrefix>4.0.7</VersionPrefix>
+		<VersionPrefix>4.0.8</VersionPrefix>
 		<VersionSuffix Condition="'$(Configuration)' == 'Debug'">$(VersionBuild)-preview.$(VersionRevision)</VersionSuffix>
 		<Authors>Alexandre T. Perez</Authors>
 		<Product>Autossential.Activities.Packaging</Product>

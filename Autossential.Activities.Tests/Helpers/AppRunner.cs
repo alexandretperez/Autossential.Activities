@@ -4,7 +4,7 @@ namespace Autossential.Activities.Tests.Helpers
 {
     internal static class AppRunner
     {
-        public static WorkflowApplication Run(Activity root, Action<WorkflowApplicationCompletedEventArgs>? onCompleted = null)
+        public static WorkflowApplication Run(Activity root, Action<WorkflowApplicationCompletedEventArgs> onCompleted = null)
         {
             var app = new WorkflowApplication(root)
             {

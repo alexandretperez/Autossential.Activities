@@ -14,7 +14,7 @@ namespace Autossential.Activities.Tests.Core
         [Arguments(42)]
         [Arguments(true)]
         [Arguments(3.14)]
-        public async Task Constructor_ScalarValues_YieldScalarType(object? value)
+        public async Task Constructor_ScalarValues_YieldScalarType(object value)
         {
             var node = new DataNode(value);
             await Assert.That(node.Type).IsEqualTo(NodeType.Scalar);

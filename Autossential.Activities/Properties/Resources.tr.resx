@@ -469,33 +469,54 @@
     <value>Ağ sürücüsünü eşlerken kullanıcının kimliğini doğrulamak için kullanıcı adı, parola ve isteğe bağlı olarak etki alanını içeren NetworkCredential nesnesini belirtir. Korumalı paylaşımlı klasörler için gereklidir.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Sonuç</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Eşlemesi kaldırılacak eşlenmiş sürücünün sürücü harfini belirtir. Gerekli format &lt;harf&gt;&lt;iki nokta üst üste&gt; şeklindedir, örneğin: "X:", "y:", "Z:".</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Sürücü Harfi</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>İşlemin dönüş kodu.</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Yanıt Kodu</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Sonuç açıklaması.</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Yanıt Mesajı</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Sürücü bağlantısı başarıyla kesildiyse True.</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Sürücü Bağlantısını Kes</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Sistemdeki bir veya tüm eşlenmiş ağ sürücülerinin eşlemesini kaldırır.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Sürücü Eşlemesini Kaldır</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Eşlemesi kaldırılacak eşlenmiş sürücünün sürücü harfini belirtir. Gerekli biçim &lt;harf&gt;&lt;iki nokta&gt; şeklindedir, örneğin: "X:", "y:", "Z:". AllDrives true olarak ayarlandığında bu özellik yoksayılır.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Sürücü Harfi</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>true olarak ayarlandığında, tüm eşlenmiş ağ sürücülerinin eşlemesini kaldırır. false olduğunda, yalnızca DriveLetter'da belirtilen sürücünün eşlemesi kaldırılır.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>Tüm Sürücüler</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Sürücü eşlemesini kaldırma işleminin dönüş kodunu temsil eder. Tek sürücü işlemleri için bu değer, işlemin standart Windows hata kodlarına göre başarılı olup olmadığını gösterir. Çoklu sürücü işlemleri için 0, tüm sürücülerin başarıyla eşlemesinin kaldırıldığını, 1 kısmi başarıyı ve 2 tüm sürücülerin başarısız olduğunu gösterir.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Yanıt Kodu</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Yanıt koduna karşılık gelen metinsel açıklamayı sağlar. Çoklu sürücü işlemleri için bu mesaj, eşlemesi kaldırılamayan her sürücü için ayrıntılar içerir.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Yanıt Mesajı</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Sürücünün eşlemesi başarıyla kaldırıldıysa true, aksi halde false döndürür. Çoklu sürücü işlemleri için, yalnızca tüm eşlenmiş sürücülerin eşlemesi başarıyla kaldırıldıysa true döndürür.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Sonuç</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>Boşsa, mevcut kullanıcının kimlik bilgileri kullanılacaktır.</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.İş Akışı</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Eşlenen bir ağ sürücüsünü kaldırır.</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Verileri Birleştir</value>

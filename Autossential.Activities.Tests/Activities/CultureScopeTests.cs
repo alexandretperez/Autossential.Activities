@@ -37,7 +37,7 @@ namespace Autossential.Activities.Tests.Activities
         [Arguments("ja-JP")]
         public async Task ShouldApplyCulture_DuringBodyExecution(string cultureName)
         {
-            CultureInfo? cultureInsideBody = null;
+            CultureInfo cultureInsideBody = null;
             var completed = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -59,7 +59,7 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task WithEmptyCultureString_ShouldUseInvariantCulture()
         {
-            CultureInfo? inside = null;
+            CultureInfo inside = null;
             var completed = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -80,7 +80,7 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task WithNullCulture_ShouldFallbackToEmptyString_AndUseInvariantCulture()
         {
-            CultureInfo? inside = null;
+            CultureInfo inside = null;
             var completed = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -102,7 +102,7 @@ namespace Autossential.Activities.Tests.Activities
         public async Task ShouldRestoreOriginalCulture_AfterBodyCompletes()
         {
             var originalCulture = CultureInfo.CurrentCulture;
-            CultureInfo? after = null;
+            CultureInfo after = null;
             var completed = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -124,8 +124,8 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task NestedCultureScopes_ShouldApplyInnerCulture_ThenRestoreOuter()
         {
-            CultureInfo? innerCulture = null;
-            CultureInfo? outerCulture = null;
+            CultureInfo innerCulture = null;
+            CultureInfo outerCulture = null;
             var completed = new ManualResetEventSlim(false);
 
             var outer = new CultureScope
@@ -162,7 +162,7 @@ namespace Autossential.Activities.Tests.Activities
         public async Task ShouldRestoreOriginalCulture_AfterBodyFaults()
         {
             var originalCulture = CultureInfo.CurrentCulture;
-            CultureInfo? after = null;
+            CultureInfo after = null;
             var signaled = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -187,7 +187,7 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task WithInvalidCultureName_ShouldCompleteWithFaultedState()
         {
-            WorkflowApplicationCompletedEventArgs? completedArgs = null;
+            WorkflowApplicationCompletedEventArgs completedArgs = null;
             var signaled = new ManualResetEventSlim(false);
 
             var scope = new CultureScope
@@ -210,7 +210,7 @@ namespace Autossential.Activities.Tests.Activities
         [Test]
         public async Task WhenBodyIsNull_ShouldCompleteWithoutFault()
         {
-            WorkflowApplicationCompletedEventArgs? completedArgs = null;
+            WorkflowApplicationCompletedEventArgs completedArgs = null;
             var completed = new ManualResetEventSlim(false);
 
             var scope = new CultureScope

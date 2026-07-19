@@ -469,33 +469,54 @@
     <value>指定 NetworkCredential 物件，其中包含使用者名稱、密碼以及選擇性的網域，用於在對應網路磁碟機時驗證使用者身分。受保護的共用資料夾需要此參數。</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>結果</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>指定要取消已對應的已對應磁碟機的磁碟機號。格式要求為&lt;字母&gt;&lt;冒號&gt;，例如：「X:」、「y:」、「Z:」。</value>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>磁碟機代號</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>操作傳回代碼。</value>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>回應代碼</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>結果說明。</value>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>回應訊息</value>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>如果成功中斷磁碟機連線則傳回 True。</value>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>中斷磁碟機連線</value>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>從系統中取消對應一個或所有已對應的網路磁碟機。</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>取消對應磁碟機</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>指定要取消對應的已對應磁碟機的代號。所需格式為 &lt;字母&gt;&lt;冒號&gt;，例如："X:"、"y:"、"Z:"。當 AllDrives 設定為 true 時，此屬性將被忽略。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>磁碟機代號</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>當設定為 true 時，取消對應所有已對應的網路磁碟機。當為 false 時，僅取消對應 DriveLetter 中指定的磁碟機。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>所有磁碟機</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>表示磁碟機取消對應作業的傳回碼。對於單一磁碟機作業，此值根據標準 Windows 錯誤碼指示作業是成功還是失敗。對於多磁碟機作業，0 表示所有磁碟機都已成功取消對應，1 表示部分成功，2 表示所有磁碟機都失敗。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>回應碼</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>提供與回應碼對應的文字描述。對於多磁碟機作業，此訊息包含每個取消對應失敗的磁碟機的詳細資訊。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>回應訊息</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>如果磁碟機成功取消對應，則傳回 true，否則傳回 false。對於多磁碟機作業，僅當所有已對應的磁碟機都成功取消對應時才傳回 true。</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>結果</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>如果為空，將使用目前使用者的認證。</value>
   </data>
@@ -789,9 +810,6 @@
   </data>
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.工作流</value>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>刪除已連線的網路磁碟機。</value>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>合併資料</value>

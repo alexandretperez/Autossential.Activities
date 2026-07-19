@@ -585,42 +585,54 @@
     <value>Specifies the NetworkCredential object containing the username, password, and optionally the domain to authenticate the user when mapping the network drive. Required for protected shared folders.</value>
     <comment>property description</comment>
   </data>
-  <data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
-    <value>Result</value>
-    <comment>property name</comment>
-  </data>
-  <data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
-    <value>Specifies the drive letter of the mapped drive to be unmapped. The required format is &lt;letter&gt;&lt;colon&gt;, for example: "X:", "y:", "Z:".</value>
-    <comment>property description</comment>
-  </data>
-  <data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
-    <value>Drive Letter</value>
-    <comment>property name</comment>
-  </data>
-  <data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
-    <value>Represents the return code of the drive mapping operation. This value indicates whether the operation succeeded or failed, according to the standard Windows error codes.</value>
-    <comment>property description</comment>
-  </data>
-  <data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
-    <value>Response Code</value>
-    <comment>property name</comment>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
-    <value>Provides the textual description corresponding to the response code. This message explains the result of the operation in a human‑readable format.</value>
-    <comment>property description</comment>
-  </data>
-  <data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
-    <value>Response Message</value>
-    <comment>property name</comment>
-  </data>
-  <data name="UnmapDrive_Result_Description" xml:space="preserve">
-    <value>Returns true if the drive was successfully unmapped, false otherise.</value>
-    <comment>property description</comment>
-  </data>
-  <data name="UnmapDrive_DisplayName" xml:space="preserve">
-    <value>Unmap Drive</value>
-    <comment>activity name</comment>
-  </data>
+	<data name="UnmapDrive_Description" xml:space="preserve">
+  <value>Unmaps one or all mapped network drives from the system.</value>
+  <comment>activity description</comment>
+</data>
+	<data name="UnmapDrive_DisplayName" xml:space="preserve">
+  <value>Unmap Drive</value>
+  <comment>activity name</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_Description" xml:space="preserve">
+  <value>Specifies the drive letter of the mapped drive to be unmapped. The required format is &lt;letter&gt;&lt;colon&gt;, for example: "X:", "y:", "Z:". This property is ignored when AllDrives is set to true.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_DriveLetter_DisplayName" xml:space="preserve">
+  <value>Drive Letter</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_Description" xml:space="preserve">
+  <value>When set to true, unmaps all mapped network drives. When false, only the drive specified in DriveLetter is unmapped.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_AllDrives_DisplayName" xml:space="preserve">
+  <value>All Drives</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_Description" xml:space="preserve">
+  <value>Represents the return code of the drive unmapping operation. For single drive operations, this value indicates whether the operation succeeded or failed according to standard Windows error codes. For multi-drive operations, 0 indicates all drives were successfully unmapped, 1 indicates partial success, and 2 indicates all drives failed.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseCode_DisplayName" xml:space="preserve">
+  <value>Response Code</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_Description" xml:space="preserve">
+  <value>Provides the textual description corresponding to the response code. For multi-drive operations, this message contains details for each drive that failed to unmap.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_ResponseMessage_DisplayName" xml:space="preserve">
+  <value>Response Message</value>
+  <comment>property name</comment>
+</data>
+	<data name="UnmapDrive_Result_Description" xml:space="preserve">
+  <value>Returns true if the drive was successfully unmapped, false otherwise. For multi-drive operations, returns true only if all mapped drives were successfully unmapped.</value>
+  <comment>property description</comment>
+</data>
+	<data name="UnmapDrive_Result_DisplayName" xml:space="preserve">
+  <value>Result</value>
+  <comment>property name</comment>
+</data>
   <data name="MapDrive_Credential_Placeholder" xml:space="preserve">
     <value>If not provided, current user credentials will be used.</value>
     <comment>placeholder</comment>
@@ -1012,10 +1024,6 @@
   <data name="ActivityCategories_Workflow" xml:space="preserve">
     <value>Autossential.Workflow</value>
     <comment>category</comment>
-  </data>
-  <data name="UnmapDrive_Description" xml:space="preserve">
-    <value>Removes a mapped network drive from the system.</value>
-    <comment>activity description</comment>
   </data>
   <data name="MergeData_DisplayName" xml:space="preserve">
     <value>Merge Data</value>
