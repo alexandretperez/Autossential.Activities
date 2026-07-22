@@ -270,17 +270,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "DataTableToText_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "DataTableToText_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "DataTableToText_Result_Description"
         }
       ],
       "shortName": "DataTableToText",
@@ -457,17 +446,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "LoadDataFile_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "LoadDataFile_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "LoadDataFile_Result_Description"
         }
       ],
       "shortName": "LoadDataFile",
@@ -578,17 +556,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "MapDrive_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "MapDrive_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "MapDrive_Result_Description"
         }
       ],
       "shortName": "MapDrive",
@@ -677,17 +644,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "ParseData_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "ParseData_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "ParseData_Result_Description"
         }
       ],
       "shortName": "ParseData",
@@ -776,17 +732,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "RandomString_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "RandomString_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "RandomString_Result_Description"
         }
       ],
       "shortName": "RandomString",
@@ -974,17 +919,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "ReplaceTokens_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "ReplaceTokens_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "ReplaceTokens_Result_Description"
         }
       ],
       "shortName": "ReplaceTokens",
@@ -1073,17 +1007,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "TimeLoop_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "TimeLoop_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "TimeLoop_Result_Description"
         }
       ],
       "shortName": "TimeLoop",
@@ -1183,17 +1106,6 @@
           "isVisible": true,
           "name": "ResultType",
           "tooltipKey": "UnmapDrive_ResultType_Description"
-        },
-        {
-          "category": {
-            "displayNameKey": "Categories_Output",
-            "name": "Output"
-          },
-          "displayNameKey": "UnmapDrive_Result_DisplayName",
-          "isRequired": false,
-          "isVisible": true,
-          "name": "Result",
-          "tooltipKey": "UnmapDrive_Result_Description"
         }
       ],
       "shortName": "UnmapDrive",
