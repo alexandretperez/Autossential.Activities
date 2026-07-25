@@ -1,5 +1,6 @@
 ﻿
 using Autossential.Activities.Base;
+using Autossential.Activities.Properties;
 using System.Activities.DesignViewModels;
 
 namespace Autossential.Activities.ViewModels
@@ -12,6 +13,9 @@ namespace Autossential.Activities.ViewModels
         {
             base.InitializeModel();
             PersistValuesChangedDuringInit();
+
+            Condition.IsPrincipal = true;
+            Condition.Placeholder = Resources.Exit_Placeholder_TrueByDefault;
         }
     }
 }

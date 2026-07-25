@@ -682,6 +682,15 @@ namespace Autossential.Activities.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to True by default.
+        /// </summary>
+        public static string Exit_Placeholder_TrueByDefault {
+            get {
+                return ResourceManager.GetString("Exit_Placeholder_TrueByDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A boolean-returning activity to be evaluated..
         /// </summary>
         public static string IfActivity_Condition_Description {

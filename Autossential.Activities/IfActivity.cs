@@ -8,6 +8,7 @@ namespace Autossential.Activities
 {
     public sealed class IfActivity : NativeActivity
     {
+        [RequiredArgument]
         public ActivityFunc<bool> Condition { get; set; }
 
         [DependsOn("Condition")]

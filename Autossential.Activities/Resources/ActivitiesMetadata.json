@@ -299,7 +299,7 @@
             "name": "Options"
           },
           "displayNameKey": "IfActivity_Condition_DisplayName",
-          "isRequired": false,
+          "isRequired": true,
           "isVisible": true,
           "name": "Condition",
           "tooltipKey": "IfActivity_Condition_Description"
