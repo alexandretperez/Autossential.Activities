@@ -12,14 +12,15 @@ namespace Autossential.Activities
         public InArgument<double> IntervalSeconds { get; set; }
         public OutArgument<int> IterationIndex { get; set; }
 
-        private TimeSpan _timeout;
-        private double _intervalSeconds;
-        private int _iterationIndex;
-        private Stopwatch _sw;
-        private bool _stop;
-
         [Browsable(false)]
         public ActivityAction Body { get; set; }
+
+        private readonly Variable<TimeSpan> _timeoutVar = new();
+        private readonly Variable<double> _intervalSecondsVar = new();
+        private readonly Variable<int> _iterationIndexVar = new();
+        private readonly Variable<DateTime> _startTimeVar = new();
+        private readonly Variable<bool> _stopVar = new();
+
         protected override bool CanInduceIdle => true;
 
         public TimeLoop()
@@ -30,12 +31,23 @@ namespace Autossential.Activities
             };
         }
 
+        protected override void CacheMetadata(NativeActivityMetadata metadata)
+        {
+            base.CacheMetadata(metadata);
+            metadata.AddImplementationVariable(_timeoutVar);
+            metadata.AddImplementationVariable(_intervalSecondsVar);
+            metadata.AddImplementationVariable(_iterationIndexVar);
+            metadata.AddImplementationVariable(_startTimeVar);
+            metadata.AddImplementationVariable(_stopVar);
+        }
+
         protected override void Execute(NativeActivityContext context)
         {
-            _timeout = Timeout.Get(context);
-            _intervalSeconds = IntervalSeconds.Get(context);
-            _iterationIndex = IterationIndex.Get(context);
-            _sw = Stopwatch.StartNew();
+            _timeoutVar.Set(context, Timeout.Get(context));
+            _intervalSecondsVar.Set(context, IntervalSeconds.Get(context));
+            _iterationIndexVar.Set(context, 0);
+            _startTimeVar.Set(context, DateTime.UtcNow);
+            _stopVar.Set(context, false);
 
             CreateExitBookmark(context);
             ExecuteInternal(context);
@@ -49,15 +61,19 @@ namespace Autossential.Activities
                 return;
             }
 
-            var timeout = _sw.Elapsed > _timeout;
-            if (timeout || _stop)
+            var elapsed = DateTime.UtcNow - _startTimeVar.Get(context);
+            var timedOut = elapsed > _timeoutVar.Get(context);
+            var stop = _stopVar.Get(context);
+
+            if (timedOut || stop)
             {
-                Result.Set(context, timeout);
+                Result.Set(context, timedOut);
                 return;
             }
 
-            IterationIndex.Set(context, _iterationIndex);
-            _iterationIndex++;
+            var index = _iterationIndexVar.Get(context);
+            IterationIndex.Set(context, index);
+            _iterationIndexVar.Set(context, index + 1);
 
             context.ScheduleAction(Body, OnIterationCompleted, OnIterationFaulted);
         }
@@ -70,8 +86,9 @@ namespace Autossential.Activities
 
         private void OnIterationCompleted(NativeActivityContext context, ActivityInstance completedInstance)
         {
-            if (_intervalSeconds > 0 && !_stop)
-                Thread.Sleep(TimeSpan.FromSeconds(_intervalSeconds));
+            var intervalSeconds = _intervalSecondsVar.Get(context);
+            if (intervalSeconds > 0 && !_stopVar.Get(context))
+                Thread.Sleep(TimeSpan.FromSeconds(intervalSeconds));
 
             ExecuteInternal(context);
         }
@@ -84,7 +101,7 @@ namespace Autossential.Activities
 
         private void OnExit(NativeActivityContext context, Bookmark bookmark, object value)
         {
-            _stop = true;
+            _stopVar.Set(context, true);
             context.CancelChildren();
             if (value is Bookmark b)
                 context.ResumeBookmark(b, value);

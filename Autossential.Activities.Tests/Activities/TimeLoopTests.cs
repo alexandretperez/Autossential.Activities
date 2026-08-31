@@ -1,5 +1,8 @@
-﻿using Autossential.Activities.Tests.Helpers;
+﻿using Autossential.Activities.Tests.Extensions;
+using Autossential.Activities.Tests.Helpers;
+using Microsoft.VisualBasic.Activities;
 using System.Activities;
+using System.Activities.Expressions;
 using System.Activities.Statements;
 
 namespace Autossential.Activities.Tests.Activities
@@ -159,6 +162,48 @@ namespace Autossential.Activities.Tests.Activities
 
             await Assert.That(() => WorkflowInvoker.Invoke(loop))
                 .Throws<ApplicationException>();
+        }
+
+        [Test]
+        public async Task SameInstance_InvokedTwice_SecondRunExitsOnItsOwnCondition_NotFirstRunsResidualStop()
+        {
+            var bodyRunCount = 0;
+            var allowExit = false;
+
+            var loop = new TimeLoop
+            {
+                Timeout = new InArgument<TimeSpan>(ctx => TimeSpan.FromSeconds(1)),
+                IntervalSeconds = new InArgument<double>(0),
+                Body = new ActivityAction
+                {
+                    Handler = new Sequence
+                    {
+                        Activities =
+                        {
+                            new ActionInvoker(() => bodyRunCount++),
+                            new Exit { Condition = new InArgument<bool>(ctx => allowExit) }
+                        }
+                    }
+                }
+            };
+
+            bodyRunCount = 0;
+            allowExit = true;
+            var (_, outputs1) = WorkflowInvoker.InvokeOutputs(loop);
+            var result1 = (bool)outputs1["Result"];
+            var bodyRunCount1 = bodyRunCount;
+
+            bodyRunCount = 0;
+            allowExit = false;
+            var (_, outputs2) = WorkflowInvoker.InvokeOutputs(loop);
+            var result2 = (bool)outputs2["Result"];
+            var bodyRunCount2 = bodyRunCount;
+
+            await Assert.That(result1).IsFalse(); // stop by exit
+            await Assert.That(bodyRunCount1).IsGreaterThanOrEqualTo(1);
+
+            await Assert.That(result2).IsTrue(); // stop by timeout
+            await Assert.That(bodyRunCount2).IsGreaterThanOrEqualTo(1);
         }
 
         private static TimeLoop Build(TimeSpan timeout, double intervalSeconds, Action bodyAction = null!)
