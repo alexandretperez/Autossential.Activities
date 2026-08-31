@@ -9,6 +9,7 @@ namespace Autossential.Activities.ViewModels
         public DesignInArgument<TimeSpan> Timeout { get; set; }
         public DesignInArgument<double> IntervalSeconds { get; set; }
         public DesignOutArgument<int> IterationIndex { get; set; }
+        public DesignOutArgument<bool> Result { get; set; }
 
         protected override void InitializeModel()
         {
@@ -20,6 +21,7 @@ namespace Autossential.Activities.ViewModels
             Timeout.OrderIndex = orderIndex++;
             IntervalSeconds.OrderIndex = orderIndex++;
             IterationIndex.OrderIndex = orderIndex++;
+            Result.OrderIndex = orderIndex++;
         }
     }
 }
