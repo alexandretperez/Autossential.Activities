@@ -61,6 +61,7 @@ namespace Autossential.Activities.Tests.Activities
                 .Throws<InvalidOperationException>();
         }
 
+
         [Test]
         public async Task WithDuplicateHeaderNames_AutoRenameTrue_RenamesDuplicates()
         {
@@ -82,6 +83,40 @@ namespace Autossential.Activities.Tests.Activities
             var result = (DataTable)inputs["DataTable"];
             await Assert.That(result.Columns[0].ColumnName).IsNotEqualTo(result.Columns[1].ColumnName);
             await Assert.That(result.Columns.Count).IsEqualTo(3);
+        }
+
+
+        [Test]
+        [Arguments(true)]
+        [Arguments(false)]
+        public async Task EmptyCell_AutoRenameTrue_RenamesDuplicates(bool autoRename)
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("Column0");
+            dt.Columns.Add("Column1");
+            dt.Columns.Add("Column2");
+            dt.Columns.Add("Column3");
+            dt.Columns.Add("Column4");
+            dt.Rows.Add("First", "", "", "Four", "");
+            dt.Rows.Add(1, 2, 3, 4, 5);
+
+            var inputs = new Dictionary<string, object>
+            {
+                ["DataTable"] = dt,
+                ["AutoRename"] = autoRename
+            };
+
+            if (autoRename)
+            {
+                WorkflowInvoker.Invoke(new PromoteHeaders(), inputs);
+
+                var result = (DataTable)inputs["DataTable"];
+                await Assert.That(result.Columns.Cast<DataColumn>().Select(p => p.ColumnName)).IsEquivalentTo(["First", "Col", "Col1", "Four", "Col2"]);
+            }
+            else
+            {
+                Assert.ThrowsExactly<DuplicateNameException>(() => WorkflowInvoker.Invoke(new PromoteHeaders(), inputs));
+            }
         }
     }
 }

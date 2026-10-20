@@ -1,6 +1,7 @@
 ﻿using Autossential.Activities.Properties;
 using System.Activities;
 using System.Data;
+using System.Xml.Linq;
 
 namespace Autossential.Activities
 {
@@ -21,39 +22,36 @@ namespace Autossential.Activities
 
             var colNames = dt.Rows[0].ItemArray.Select(v => v.ToString()).ToArray();
 
-            var emptyColIndex = 0;
-            while (colNames.Any(name => $"_{emptyColIndex}".Equals(name, StringComparison.OrdinalIgnoreCase)))
-            {
-                emptyColIndex++;
-            }
-
             var cache = new Dictionary<string, int>();
             if (autoRename)
             {
                 for (int i = 0; i < colNames.Length; i++)
                 {
-                    var name = string.IsNullOrEmpty(colNames[i]) ? $"_{emptyColIndex}" : colNames[i];
-                    if (cache.ContainsKey(name))
+                    var name = colNames[i];
+                    var colName = string.IsNullOrWhiteSpace(name) ? "Col" : name;
+                    if (cache.TryGetValue(colName, out int value))
                     {
-                        cache[name]++;
-                        name += cache[name].ToString();
+                        cache[colName] = ++value;
+                        colName = $"{colName}{value}";
                     }
                     else
                     {
-                        cache.Add(name, 0);
+                        cache.Add(colName, 0);
                     }
-                    dt.Columns[i].ColumnName = name;
-                }
 
+                    dt.Columns[i].ColumnName = colName;
+                }
             }
             else
             {
                 for (int i = 0; i < colNames.Length; i++)
                 {
-                    var name = string.IsNullOrEmpty(colNames[i]) ? $"_{emptyColIndex}" : colNames[i];
-                    dt.Columns[i].ColumnName = name;
+                    var name = colNames[i];
+                    var colName = string.IsNullOrWhiteSpace(name) ? "Col" : name;
+                    dt.Columns[i].ColumnName = colName;
                 }
             }
+            
 
             dt.Rows.RemoveAt(0);
             DataTable.Set(context, dt);
