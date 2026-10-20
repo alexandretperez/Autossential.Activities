@@ -2,6 +2,7 @@
 using Autossential.Activities.Extensions;
 using Autossential.Activities.Properties;
 using System.Activities;
+using System.Diagnostics;
 
 namespace Autossential.Activities
 {
@@ -100,41 +101,41 @@ namespace Autossential.Activities
 
             return Task.Run<Action<AsyncCodeActivityContext>>(() =>
             {
-                while (true)
-                {
-                    try
-                    {
-                        if (token.IsCancellationRequested)
-                            token.ThrowIfCancellationRequested();
+               while (true)
+               {
+                   try
+                   {
+                       if (token.IsCancellationRequested)
+                           token.ThrowIfCancellationRequested();
 
-                        if (filePath == null)
-                        {
-                            filePath = Directory
-                                .EnumerateFiles(dirPath, "*", SearchOption.TopDirectoryOnly)
-                                .FirstOrDefault(path => Path.GetFileName(path).IsMatch(searchPattern));
-                        }
-                        else
-                        {
-                            using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
-                            break;
-                        }
+                       if (filePath is null || !File.Exists(filePath))
+                       {
+                           filePath = Directory
+                               .EnumerateFiles(dirPath, "*", SearchOption.TopDirectoryOnly)
+                               .FirstOrDefault(path => Path.GetFileName(path).IsMatch(searchPattern));
+                       }
+                       else
+                       {
+                           using var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None);
+                           break;
+                       }
 
-                        Thread.Sleep(pollingInterval);
-                    }
-                    catch (Exception e)
-                    {
-                        if (e is OperationCanceledException || e is ObjectDisposedException)
-                            break;
-                        else
-                            Thread.Sleep(pollingInterval);
-                    }
-                }
+                       Thread.Sleep(pollingInterval);
+                   }
+                   catch (Exception e)
+                   {
+                       if (e is OperationCanceledException || e is ObjectDisposedException)
+                           break;
+                       else
+                           Thread.Sleep(pollingInterval);
+                   }
+               }
 
-                return ctx =>
-                {
-                    if (filePath != null && File.Exists(filePath))
-                        Result.Set(ctx, new FileInfo(filePath));
-                };
+               return ctx =>
+               {
+                   if (filePath != null && File.Exists(filePath))
+                       Result.Set(ctx, new FileInfo(filePath));
+               };
             }, token);
         }
     }

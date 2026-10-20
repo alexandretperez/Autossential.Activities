@@ -125,5 +125,47 @@ namespace Autossential.Activities.Tests.Activities
             await Assert.That(() => WorkflowInvoker.Invoke(new WaitFile(), inputs))
                 .Throws<FileNotFoundException>();
         }
+
+        [Test]
+        public async Task DynamicFile_WhenTempFileIsRenamedWhileLocked_ReturnsFinalFile()
+        {
+            var dir = NewDir();
+            var tempFile = Path.Combine(dir, "file.crdownload");
+            var finalFile = Path.Combine(dir, "file.zip");
+
+            // Simula o navegador: arquivo temporário preso (sem compartilhamento de leitura).
+            // FileShare.Delete permite renomear com o handle ainda aberto.
+            using var download = new FileStream(tempFile, FileMode.Create, FileAccess.Write, FileShare.Delete);
+            download.Write([1, 2, 3]);
+            download.Flush();
+
+            var inputs = new Dictionary<string, object>
+            {
+                ["DirectoryPath"] = dir,
+                ["SearchPattern"] = "file.*", // casa com .crdownload e com .zip
+                ["TimeoutSeconds"] = 10.0,
+                ["PollingIntervalSeconds"] = 0.1
+            };
+
+            var activityTask = Task.Run(() => WorkflowInvoker.Invoke(new WaitFile { DynamicFile = true }, inputs));
+
+            // A activity encontra o .crdownload, mas não consegue abri-lo: deve continuar esperando.
+            await Task.Delay(1500);
+            await Assert.That(activityTask.IsCompleted).IsFalse();
+
+            // Download "termina": o arquivo é renomeado, mas ainda está preso.
+            File.Move(tempFile, finalFile);
+
+            // A activity deve migrar para o novo arquivo e continuar esperando, pois ele segue preso.
+            await Task.Delay(1500);
+            await Assert.That(activityTask.IsCompleted).IsFalse();
+
+            // Libera o arquivo: agora a activity consegue abri-lo.
+            download.Dispose();
+
+            var result = await activityTask;
+            var info = await Assert.That(result["Result"]).IsTypeOf<FileInfo>();
+            await Assert.That(info.FullName).IsEqualTo(Path.GetFullPath(finalFile));
+        }
     }
 }
